@@ -55,4 +55,13 @@ public class HomeController {
         model.addAttribute("errorMessage", "You do not have the required permissions to view this protected resource.");
         return "error/403";
     }
+
+    @GetMapping("/api/health")
+    @org.springframework.web.bind.annotation.ResponseBody
+    public org.springframework.http.ResponseEntity<java.util.Map<String, String>> healthCheck() {
+        return org.springframework.http.ResponseEntity.ok(java.util.Map.of(
+            "status", "UP",
+            "service", "scrap-collection-backend"
+        ));
+    }
 }
